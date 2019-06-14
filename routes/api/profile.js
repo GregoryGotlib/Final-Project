@@ -5,11 +5,9 @@ const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const profileValidation = require('../../validation/profile');
 const fs = require('fs');
-const java = require('java');
 var nameCounter=0;
 var seqCounter=0;
 var idCounter=0;
-var jarfile = require("jarfile");
 
 // Post search data by name 
 router.post('/name',(req,res)=>{
