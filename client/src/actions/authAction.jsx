@@ -33,7 +33,7 @@ export const userLogin = (data,history)=> dispatch =>{
 }
 
 export const userReg = (data,history) => dispatch =>{
-  console.log(data)
+  console.log('reg history',history)
     axios.post('/api/users/register',data).then(res =>{
       history.push('/login');
     }).catch(error=>{

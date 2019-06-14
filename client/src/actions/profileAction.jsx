@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export const getProfile = () => dispatch =>{
     dispatch(loadingProfile());
     axios.get('/api/profile').then(res =>

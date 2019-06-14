@@ -9,6 +9,8 @@ const path = require('path');
 const DB = require('./config/keys').mongoURI;
 require('./config/passport')(passport);
 
+
+
 mongoose.connect(DB,{ useNewUrlParser: true }).then(() => console.log('Connected to mongoDB..')).catch(error => console.log(error));
 
 app.use(bodyParser.urlencoded({extended:false}));

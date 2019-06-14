@@ -16,7 +16,10 @@ import ProfileDash from './components/profile/ProfileDash';
 import CreateProfile from './components/profile/CreateProfile';
 import Profile from './components/profile/Profile';
 import EditProfile from './components/profile/EditProfile';
+import SearchHistory from './components/profile/SearchHistory';
 import './App.css';
+import SearchProtein from './components/user/SearchProtein';
+import ShowData from './components/profile/ShowData';
 
 
 
@@ -55,6 +58,15 @@ class App extends Component {
             </Switch>
             <Switch>
                 <PrivateRoute exact path="/editprofile" component={EditProfile}/>
+            </Switch>
+            <Switch>
+                <PrivateRoute exact path="/searchhistory" component={SearchHistory}/>
+            </Switch>
+            <Switch>
+                <PrivateRoute exact path="/searchprotein" component={SearchProtein}/>
+            </Switch>
+            <Switch>
+                <PrivateRoute exact path="/showdata" component={ShowData}/>
             </Switch>
           </div>
             <Footer/>

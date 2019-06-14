@@ -38,6 +38,10 @@ class ProfileDash extends Component {
            Edit profile
            </a>
 
+           <a className="btn btn-success text-center mt-5 mr-3 shadow-lg p-3 rounded" href='/searchhistory'>
+           Search history
+           </a>
+
            <a className="btn btn-primary text-center mt-5 mr-3 shadow-lg p-3 rounded" href='/dashboard'>
            Back to dashboard
            </a>

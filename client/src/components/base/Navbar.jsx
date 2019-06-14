@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { userLogout } from '../../actions/authAction'
-
+import icon from '../../images/NavbarIcon.png';
 class Navbar extends Component {
 
     logoutHandler = (e)=>{
@@ -35,7 +35,7 @@ class Navbar extends Component {
 
     return (
         <nav className="navbar navbar-expand-sm navbar-light bg-light mb-4">
-            <a href="/" className="navbar-brand ml-4" >Proteinush</a>
+           <a href="/" className="navbar-brand ml-4" >Proteinush</a>
             <button 
             className="navbar-toggler" 
             type="button" 

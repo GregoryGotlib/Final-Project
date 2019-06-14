@@ -39,8 +39,7 @@ class Register extends Component {
             confirmPassword:this.state.confirmPassword,
             email:this.state.email
         }
-        console.log(this.state.errors)
-        console.log(newUser)
+        console.log(this.props.history)
         this.props.userReg(newUser,this.props.history);
     }
 

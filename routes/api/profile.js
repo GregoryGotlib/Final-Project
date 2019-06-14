@@ -4,6 +4,69 @@ const passport = require('passport');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const profileValidation = require('../../validation/profile');
+const fs = require('fs');
+const java = require('java');
+var nameCounter=0;
+var seqCounter=0;
+var idCounter=0;
+var jarfile = require("jarfile");
+
+// Post search data by name 
+router.post('/name',(req,res)=>{
+    nameCounter++
+    const fileData = new Uint8Array(Buffer.from(req.body.byName));
+    fs.writeFile('byNameDataFile.'+nameCounter+'.txt', fileData, (err) => {
+        if (err) throw err;
+        console.log('byNameDataFile file has been saved!');
+      }); 
+
+// Get the Main-Class entry from foo.jar.
+/*jarfile.fetchJarAtPath("../Main.jar", function (err, jar) {
+    console.log(jar.valueForManifestEntry("Main-Class"))
+    console.log(err) 
+})
+*/
+
+/*var filename ='44_Seed-AAGTVPVYPAPSNMGSDRFE.pcn';
+var valuesToSend = new Array();
+fs.readFile(filename, 'utf8', function(err, data) {
+    if (err) throw err;
+    console.log('OK: ' + filename);
+    valuesToSend.push(data.substring(106,108))
+    valuesToSend.push(data.substring(109,139))
+    console.log(valuesToSend);
+  });
+*/
+
+var exec = require('child_process').exec;
+var child = exec('java -jar ./Main.jar',
+function (error, stdout, stderr){
+console.log('Output -> ' + stdout);
+if(error !== null){
+  console.log("Error -> "+error);
+}
+});
+})
+
+// Post search data by sequence 
+router.post('/seq',(req,res)=>{
+    seqCounter++
+    const fileData = new Uint8Array(Buffer.from(req.body.bySeq));
+    fs.writeFile('bySeqDataFile'+seqCounter+'.txt', fileData, (err) => {
+        if (err) throw err;
+        console.log('bySeqDataFile file has been saved!');
+      }); 
+})
+
+// Post search data by id 
+router.post('/id',(req,res)=>{
+    idCounter++;
+    const fileData = new Uint8Array(Buffer.from(req.body.byID));
+    fs.writeFile('byIdDataFile'+idCounter+'.txt', fileData, (err) => {
+        if (err) throw err;
+        console.log('byIdDataFile file has been saved!');
+      }); 
+})
 
 // Get profile
 router.get('/',passport.authenticate('jwt',{session:false}),(req,res)=>{

@@ -1,0 +1,15 @@
+{
+	"InputData": "C:\\Users\\Alexander\\source\\Repos\\FastApproximateMatch\\ConfigurationDataExamples\\DebugSet\\ManyInputData",
+	"McsFilePath": "C:\\Users\\Alexander\\source\\Repos\\FastApproximateMatch\\ConfigurationDataExamples\\DebugSet\\mcs4.txt",
+	"SequencesToSearch": "C:\\Users\\Alexander\\source\\Repos\\FastApproximateMatch\\ConfigurationDataExamples\\DebugSet\\SeqsToSearch.txt",
+	"OutputResultDirectory": "C:\\Users\\Alexander\\source\\Repos\\FastApproximateMatch\\ConfigurationDataExamples\\DebugSet\\Results",
+	"LogDirectory": "C:\\Users\\Alexander\\source\\Repos\\FastApproximateMatch\\ConfigurationDataExamples\\DebugSet\\Logs",
+	"NumOfThreads": 8,
+	"SizeOfSeed": 20,
+	"NumOfAllowedMismatches": 8,
+	"PcnLevels": 2,
+	"FormBufferSize": 10,
+	"SequencesPerChunk": 100000,
+	"Alphabet": "ARNDCEQGHILKMFPSTWYV",
+	"ComplexityThreshold": 0.333
+}

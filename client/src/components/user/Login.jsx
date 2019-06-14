@@ -46,7 +46,7 @@ import { withRouter } from 'react-router-dom';
     return (
 <div className="container">
 <div className="card mt-20 shadow-sm p-3 mb-2 bg-white rounded text-center"><h1 className="display-4">Login</h1> </div>
-  <div className="card mt-20 card mt-20 shadow p-3 mb-5 bg-white rounded">
+  <div className="card mt-20 shadow p-3 mb-5 bg-white rounded">
     <div className="login">
       <div className="container">
         <div className="row">
