@@ -8,16 +8,34 @@ const fs = require('fs');
 var nameCounter=0;
 var seqCounter=0;
 var idCounter=0;
+var index=0;
+
+
 
 // Post search data by name 
-router.post('/name',(req,res)=>{
-    nameCounter++
-    const fileData = new Uint8Array(Buffer.from(req.body.byName));
+router.post('/name',passport.authenticate('jwt',{session:false}),(req,res)=>{
+    nameCounter++;
+    index++;
+    //const fileData = new Uint8Array(Buffer.from(req.body.byName));
+    Profile.findOne({user: req.user.id}).then(profile=>{ 
+        const newFile = {
+            index:index,
+            content:req.body.byName
+        };        
+        profile.files.push(newFile);
+        profile.save().then(profile=>{
+            res.json(profile);
+        });
+    }).catch(error=>{
+        res.status(404).json(error);
+    });
+
+    /*
     fs.writeFile('byNameDataFile.'+nameCounter+'.txt', fileData, (err) => {
         if (err) throw err;
         console.log('byNameDataFile file has been saved!');
       }); 
-
+*/
 // Get the Main-Class entry from foo.jar.
 /*jarfile.fetchJarAtPath("../Main.jar", function (err, jar) {
     console.log(jar.valueForManifestEntry("Main-Class"))
@@ -35,35 +53,52 @@ fs.readFile(filename, 'utf8', function(err, data) {
     console.log(valuesToSend);
   });
 */
-
 var exec = require('child_process').exec;
-var child = exec('java -jar ./Main.jar',
+var child = exec('Main.jar -jar ../Main',
 function (error, stdout, stderr){
 console.log('Output -> ' + stdout);
 if(error !== null){
   console.log("Error -> "+error);
 }
 });
+
 })
 
 // Post search data by sequence 
-router.post('/seq',(req,res)=>{
+router.post('/seq',passport.authenticate('jwt',{session:false}),(req,res)=>{
     seqCounter++
-    const fileData = new Uint8Array(Buffer.from(req.body.bySeq));
-    fs.writeFile('bySeqDataFile'+seqCounter+'.txt', fileData, (err) => {
-        if (err) throw err;
-        console.log('bySeqDataFile file has been saved!');
-      }); 
+    index++;
+    Profile.findOne({user: req.user.id}).then(profile=>{ 
+        const newFile = {
+            index:index,
+            content:req.body.bySeq
+        };        
+        profile.files.push(newFile);
+        profile.save().then(profile=>{
+            res.json(profile);
+        });
+    }).catch(error=>{
+        res.status(404).json(error);
+    });
 })
 
 // Post search data by id 
-router.post('/id',(req,res)=>{
+router.post('/id',passport.authenticate('jwt',{session:false}),(req,res)=>{
     idCounter++;
-    const fileData = new Uint8Array(Buffer.from(req.body.byID));
-    fs.writeFile('byIdDataFile'+idCounter+'.txt', fileData, (err) => {
-        if (err) throw err;
-        console.log('byIdDataFile file has been saved!');
-      }); 
+    index++;
+    //const fileData = new Uint8Array(Buffer.from(req.body.byID));
+    Profile.findOne({user: req.user.id}).then(profile=>{ 
+        const newFile = {
+            index:index,
+            content:req.body.byID
+        };        
+        profile.files.push(newFile);
+        profile.save().then(profile=>{
+            res.json(profile);
+        });
+    }).catch(error=>{
+        res.status(404).json(error);
+    });
 })
 
 // Get profile
@@ -79,7 +114,6 @@ router.get('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
 
 // Post/Update profile
 router.post('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
-    console.log('inside post profile..')
     const {errors,isValid} = profileValidation(req.body);
 
     if(!isValid){

@@ -1,7 +1,0 @@
-
-const cmdArgs = [3111, 33].toString().replace(/[, ]+/g, " ");
-/* variable 'command line code' */
-const cmdCode = `${cmdArgs} | java -jar ./Main.jar`;
-
-var exec = require('child_process').exec;
-var child = exec(cmdCode,

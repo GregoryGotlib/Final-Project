@@ -7,6 +7,15 @@ const ProfileSchema = new Schema({
         ref:'users'
     },
 
+    files:[{
+        index:String,
+        content:String,
+        date:{
+            type:Date,
+            default:Date.now
+        },
+    }],
+
     route:{
         type:String
     },

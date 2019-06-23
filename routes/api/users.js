@@ -11,7 +11,6 @@ const keys = require('../../config/keys')
 
 // Registration
 router.post('/register',(req,res)=>{
-    console.log("inside reg..")
     const { errors, isValid } = regValidation(req.body);
     if(!isValid){
         console.log(errors);
@@ -62,7 +61,6 @@ router.post('/login',(req,res)=>{
         if(!user){
             return res.status(404).json({email:'User not exists!'});
         }
-        console.log("user exists!!!!!")
         const password = req.body.password;
         bcrypt.compare(password, user.password).then(isValid =>{
             if(isValid){
