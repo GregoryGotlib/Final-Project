@@ -14,9 +14,8 @@ class ProfileDash extends Component {
       this.props.deleteAccount();
       this.props.userLogout();
     }
-    ontest = (e) =>{
-      console.log('blablalba');
-    }
+   
+
   render() {
     const loading = this.props.profile.loading
     const profile = this.props.profile.profile

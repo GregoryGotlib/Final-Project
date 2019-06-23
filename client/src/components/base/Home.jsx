@@ -15,8 +15,8 @@ class Home extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12 text-center">
-              <h1 className="display-2 mb-4" style={{color:'black'}}>Wellcome to the Proteinush</h1>
-              <h2 className="lead" style={{color:'black'}}>blba bla bla bla</h2>
+              <h1 className="display-2 mb-4" style={{color:'black'}}>Wellcome to the Proteins</h1>
+              <h2 className="lead" style={{color:'black'}}>An app that helps you reduce the time and cost of researching proteins</h2>
               <hr/>
               <a href="/register" className="btn btn-lg btn-info mr-3 mt-3" style={{height:'1.5cm',width:'3cm'}}>Register </a>                        
               <a href="/login" className="btn btn-lg btn-success mt-3" style={{height:'1.5cm',width:'3cm'}}>Login</a> 

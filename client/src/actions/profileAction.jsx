@@ -32,13 +32,10 @@ export const getProfiles = () => dispatch =>{
 };
 
 export const createProfile = (data, history) => dispatch =>{
-    console.log('inside create profile..')
-    console.log(data);
-    console.log(history);
+   
     axios.post('/api/profile',data).then(res =>{
         history.push('/profiledash');
     }).catch(error=>{
-        console.log(error.response.data)
         dispatch({
             type:'ERRORS',
             payload:error.response.data
@@ -47,7 +44,6 @@ export const createProfile = (data, history) => dispatch =>{
 };
 
 export const getProfilebyRoute = (data) => dispatch =>{
-    console.log('inside getProfileByRoute..');
     dispatch(loadingProfile());
             axios.get(`/api/profile/route/${data}`).then(res =>{
             dispatch({

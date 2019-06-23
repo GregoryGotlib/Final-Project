@@ -10,7 +10,6 @@ class CreateProfile extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-        console.log(nextProps)
         if(nextProps.errors){
             this.setState({errors:nextProps.errors})
         }
@@ -45,7 +44,6 @@ class CreateProfile extends Component {
           location:this.state.location,
           profession:this.state.profession
         }
-        console.log(newProfile);
         this.props.createProfile(newProfile, this.props.history);
     }
 

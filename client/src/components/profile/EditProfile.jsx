@@ -26,17 +26,14 @@ class EditProfile extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-        console.log(nextProps)
         if(nextProps.errors){
             this.setState({errors:nextProps.errors})
         }
 
         // Copies the profile fields to the edit profile path
         if(nextProps.profile.profile){
-            console.log(nextProps.profile.profile)
             const profile = nextProps.profile.profile;
 
-            console.log(nextProps.profile.profile)
             if(checkInput(profile.location)){
                 profile.location = '';
             }

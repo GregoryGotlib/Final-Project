@@ -21,7 +21,7 @@ class SearchProtein extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
+    window.alert('The proccess will take some time..')
     if (this.state.byName) {
       const newData = {
         byName: this.state.byName

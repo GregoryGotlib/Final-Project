@@ -4,12 +4,10 @@ import { getProfilebyRoute } from '../../actions/profileAction';
 import ProfileHeader from './ProfileHeader';
 import Spinner from '../base/Spinner';
 
-
  class Profile extends Component {
 
 
   componentDidMount(){
-    console.log(this.props.match.params.route)
     if(this.props.match.params.route){
       this.props.getProfilebyRoute(this.props.match.params.route);
     }
@@ -19,7 +17,6 @@ import Spinner from '../base/Spinner';
     const profile = this.props.profile.profile;
     const loading = this.props.profile.loading;
     let profileData;
-
     if(profile === null || loading){
       profileData = <Spinner/>
     }

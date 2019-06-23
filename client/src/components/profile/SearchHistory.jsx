@@ -1,7 +1,47 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getProfile } from '../../actions/profileAction';
+import Spinner from '../base/Spinner';
 
-export default class SearchHistory extends Component {
+
+class SearchHistory extends Component {
+
+constructor(props){
+    super(props);
+}
+
+componentDidMount(){
+    console.log('SH didmount')
+    this.props.getProfile();
+}
+
   render() {
+   
+    console.log(this.props.profile.profile)
+    const profile = this.props.profile.profile
+    const loading = this.props.profile.loading
+    
+    let files;
+
+    if(profile === null || loading){
+        files = <Spinner/>
+      }
+    else{
+     files = profile.files.map(file=>(
+        <tr key={file._id}>
+            <td>
+                {file.index}
+            </td>
+            <td>
+                {file.date}
+            </td>
+            <td>
+                {file.content}
+            </td>
+        </tr>
+    ))
+    
+    }
     return (
     <div className="container">
         <div className="card mt-20 shadow-sm p-3 mb-2 bg-white rounded text-center"><h1 className="display-4">Searched History</h1> </div>
@@ -16,29 +56,15 @@ export default class SearchHistory extends Component {
                                         #
                                     </th>
                                     <th scope="row">
-                                        Protein Name
+                                        date
                                     </th>
                                     <th scope="row">
-                                        Display Data
-                                    </th>
-                                    <th scope="row">
-                                        Download Data
+                                        Searched Sequence
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Amino Acid</td>
-                                    <td>Click Here</td>
-                                    <td>Click Here</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Some Protein</td>
-                                    <td>Click Here</td>
-                                    <td>Click Here</td>
-                                </tr>
+                            <tbody>                 
+                              {files}              
                             </tbody>
                         </table>
                 </div>
@@ -48,3 +74,9 @@ export default class SearchHistory extends Component {
     )
   }
 }
+
+const mapStateToProps = (state)=>({
+    profile:state.profile,
+  });
+  
+  export default connect(mapStateToProps,{ getProfile})(SearchHistory);
